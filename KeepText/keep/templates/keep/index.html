@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welkome!</title>
+</head>
+<body>
+{% if zametka %}
+    <ul>
+    {% for keep in zametka %}
+        <li>{{ keep.text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No zametka are available.</p>
+{% endif %}
+</body>
+</html>
