@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <title>Welkome!</title>
 </head>
 <body>
-{% if zametka %}
+<div class="col-lg-4">
+    {% if zametka %}
     <ul>
     {% for keep in zametka %}
-        <li>{{ keep.text }}</li>
+        <li>{{ keep.header }}, {{keep.time_field}}</li>
+        <p>{{ keep.text }}</p>
     {% endfor %}
     </ul>
 {% else %}
     <p>No zametka are available.</p>
 {% endif %}
+</div>
+
+
+<form action="" class="col-lg-4" method="post">
+     {% csrf_token %}
+     {{form.as_p}}
+<div>
+    <input type="submit"  class="btn btn-primary" value="Добавть заметку" />
+</div>
+</form>
 </body>
 </html>
