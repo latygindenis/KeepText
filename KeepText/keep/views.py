@@ -8,7 +8,6 @@ def index(request):
     context = {'zametka':zametka}
     form = ZametkaForm(request.POST or None)
     if request.method == "POST":
-        print(form)
         new_form = form.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'keep/index.html', locals())
