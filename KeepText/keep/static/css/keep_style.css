@@ -1,0 +1,9 @@
+form, .col-lg-6{
+margin-bottom:10px;
+}
+.keep_field{
+background:#FFD181;
+}
+.keep_field:hover{
+background:#FFD950;
+}
