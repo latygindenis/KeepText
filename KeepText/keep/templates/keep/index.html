@@ -12,6 +12,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
     <title>KeepText</title>
 
@@ -33,19 +34,33 @@
     </ul>
   </div>
 </nav>
+<div class="container">
 
-<div class="col-lg-4">
+
     {% if zametka %}
-    <ul>
     {% for keep in zametka %}
-        <li>{{ keep.header }}, {{keep.time_field}}</li>
-        <p>{{ keep.text }}</p>
+    <div class="col-lg-3">
+        <form action="{{keep.id}}/del/" class="keep_field" method="post" style="background:#FFD181;padding-top:8%; padding-left:8%; padding-bottom:15%; padding-right:5%;margin-bottom:10px;box-shadow: 0px 4px 20px -9px #000000;font-family: 'Roboto Slab', serif;">
+            {% csrf_token %}
+            <p style=" font-weight: 700">
+                {{ keep.header }}, {{keep.time_field}}
+            </p>
+            <p style=" font-weight: 400">{{ keep.text }}</p>
+            <input type="submit"  class="btn btn-xs pull-right" style="max-width:65px" value="Удалить">
+        </form>
+
+
+        </div>
     {% endfor %}
-    </ul>
 {% else %}
+    <div class="col-lg-4">
     <p>No zametka are available.</p>
+         </div>
 {% endif %}
-</div>
+
+        <div class="col-lg-4"></div>
+    </div>
+    </div>
 
 <form action="" class="col-lg-4" method="post">
     {% csrf_token %}
@@ -55,7 +70,7 @@
     </div>
     <div class="form-group">
         <label>Текст заметки</label>
-        <input type="text" name="{{ form.text.name }}" class="form-control text-field">
+        <input type="text" name="{{ form.text.name }}" class="form-control textarea">
     </div>
 <div>
     <input type="submit"  class="btn btn-primary" value="Добавть заметку">
